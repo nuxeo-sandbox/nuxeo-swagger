@@ -1,0 +1,6523 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "localhost:8080",
+    "version": "1.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/nuxeo/site/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/@emptyWithDefault": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The type of the empty document to be initialized",
+            "in": "query",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the empty document to be initialized",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "To retrieve all initialized properties, the 'properties: *' header must be used",
+        "operationId": "getEmptyDocument",
+        "summary": "Initialize an empty document with default properties given a document type"
+      }
+    },
+    "/automation": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OperationDescriptionList"
+            }
+          }
+        },
+        "operationId": "getOperationsList",
+        "summary": "Gets the list of all operation/chain"
+      }
+    },
+    "/automation/{operationName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the operation",
+            "in": "path",
+            "name": "operationName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/OperationDescription"
+            }
+          }
+        },
+        "operationId": "getOperationDescription",
+        "summary": "Gets the description of the operation/chain"
+      },
+      "post": {
+        "consumes": [
+          "application/json+nxrequest"
+        ],
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the operation",
+            "in": "path",
+            "name": "operationName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The operation parameters",
+            "in": "body",
+            "name": "operationParams",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OperationParams"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "executeOperation",
+        "summary": "Execute an operation or a chain on a document"
+      }
+    },
+    "/config/facets": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/facet"
+            }
+          }
+        },
+        "operationId": "getFacets",
+        "summary": "List registered facets"
+      }
+    },
+    "/config/facets/{facet}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the facet",
+            "in": "path",
+            "name": "facet",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/facet"
+            }
+          }
+        },
+        "operationId": "getFacet",
+        "summary": "Facet description"
+      }
+    },
+    "/config/schemas": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/schema"
+            }
+          }
+        },
+        "operationId": "getSchemas",
+        "summary": "List registered schemas"
+      }
+    },
+    "/config/schemas/{schema}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the schema",
+            "in": "path",
+            "name": "schema",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/schema"
+            }
+          }
+        },
+        "operationId": "getSchema",
+        "summary": "Schema description"
+      }
+    },
+    "/config/types": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/docType"
+            }
+          }
+        },
+        "operationId": "getDocTypes",
+        "summary": "List registered document type"
+      }
+    },
+    "/config/types/{docType}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the document type",
+            "in": "path",
+            "name": "docType",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/docType"
+            }
+          }
+        },
+        "operationId": "getDocType",
+        "summary": "Document type description"
+      }
+    },
+    "/directory/{directoryName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Directory name. Ex: 'subject'",
+            "in": "path",
+            "name": "directoryName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/directoryEntries"
+            }
+          }
+        },
+        "operationId": "getDirectoryEntries",
+        "summary": "Get directory entries"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Directory name. Ex: 'subject'",
+            "in": "path",
+            "name": "directoryName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Directory entry object that is created or updated in the directory 'directoryName'",
+            "in": "body",
+            "name": "Directory",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/directoryEntry"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/directoryEntry"
+            }
+          }
+        },
+        "operationId": "createDirectoryEntry",
+        "summary": "Creates a directory entry"
+      }
+    },
+    "/directory/{directoryName}/{entryId}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Directory name. Ex: 'subject'",
+            "in": "path",
+            "name": "directoryName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Directory entry id",
+            "in": "path",
+            "name": "entryId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteDirectoryEntry",
+        "summary": "Delete a directory entry"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Directory name. Ex: 'subject'",
+            "in": "path",
+            "name": "directoryName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Directory entry id",
+            "in": "path",
+            "name": "entryId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/directoryEntry"
+            }
+          }
+        },
+        "operationId": "getDirectoryEntry",
+        "summary": "Get a directory entry"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Directory name. Ex: 'subject'",
+            "in": "path",
+            "name": "directoryName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Directory entry id",
+            "in": "path",
+            "name": "entryId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Directory entry object that is created or updated in the directory 'directoryName'",
+            "in": "body",
+            "name": "Directory",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/directoryEntry"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/directoryEntry"
+            }
+          }
+        },
+        "operationId": "updateDirectoryEntry",
+        "summary": "Update a directory entry"
+      }
+    },
+    "/group": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Group object to be created or updated.",
+            "in": "body",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          }
+        },
+        "operationId": "createGroup",
+        "summary": "Create a group"
+      }
+    },
+    "/group/search": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Query string. Ex: 'Admin' will return Administrator user",
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/groups"
+            }
+          }
+        },
+        "operationId": "searchGroup",
+        "summary": "Search a group"
+      }
+    },
+    "/group/{groupName}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteGroupByName",
+        "summary": "Delete a group by its name"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          }
+        },
+        "operationId": "getGroupByName",
+        "summary": "Get a group by its name"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Group object to be created or updated.",
+            "in": "body",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/group"
+            }
+          }
+        },
+        "operationId": "updateGroupByName",
+        "summary": "Update a group by its name"
+      }
+    },
+    "/group/{groupName}/@groups": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/groupList"
+            }
+          }
+        },
+        "operationId": "getGroupMembersGroup",
+        "summary": "Get the group members of a group"
+      }
+    },
+    "/group/{groupName}/@users": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/userList"
+            }
+          }
+        },
+        "operationId": "getGroupMembers",
+        "summary": "Get the user members of a group"
+      }
+    },
+    "/group/{groupName}/user/{userName}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "addAUserToGroup",
+        "summary": "Add a user to a group"
+      }
+    },
+    "/id/{docId}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "deleteDocumentById",
+        "summary": "Deletes a document by its id"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getDocumentById",
+        "summary": "Find a document by its id"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "operationId": "createDocumentById",
+        "summary": "Creates a document by its parent id"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
+        "operationId": "updateDocumentById",
+        "summary": "Updates a document by its id"
+      }
+    },
+    "/id/{docId}/@acl": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Acp"
+            }
+          }
+        },
+        "operationId": "getACLByPath",
+        "summary": "View the ACL of a document given its id"
+      }
+    },
+    "/id/{docId}/@audit": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/LogEntries"
+            }
+          }
+        },
+        "operationId": "getAuditById",
+        "summary": "View the audit trail of a document given its id"
+      }
+    },
+    "/id/{docId}/@blob/{fieldPath}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The field path you want do download (ex: file:content)",
+            "in": "path",
+            "name": "fieldPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "getBlob",
+        "summary": "Get the main blob of a document by its id"
+      }
+    },
+    "/id/{docId}/@bo/{adapterName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        },
+        "operationId": "getBOById",
+        "summary": "Get the business object adapter on a document given its id"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated business object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        },
+        "operationId": "updateBOById",
+        "summary": "Updates the business object adapter on a document given its id"
+      }
+    },
+    "/id/{docId}/@bo/{adapterName}/{docName}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the document",
+            "in": "path",
+            "name": "docName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        },
+        "operationId": "createBOById",
+        "summary": "Creates a document based on its business object"
+      }
+    },
+    "/id/{docId}/@children": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getChildrenById",
+        "summary": "Get the children of a document by its id"
+      }
+    },
+    "/id/{docId}/@children/@bo/{adapterName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObjectList"
+            }
+          }
+        },
+        "description": "<ul><li>If a document can't be adapted, the resulting item will be null</li><li> This type of call works for every API endpoint that responds DocumentList (@search, @pp ...)</li></ul>",
+        "operationId": "getBOByPath",
+        "summary": "Get the list of business object of the children of a document by its id"
+      }
+    },
+    "/id/{docId}/@convert": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the converter to execute",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested extension of the converted Blob, such as 'pdf'",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "One of the 'name', 'type' or 'format' parameters must be passed.",
+        "operationId": "convertDocumentMainBlobById",
+        "summary": "Convert the main Blob of the document"
+      }
+    },
+    "/id/{docId}/@emptyWithDefault": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The type of the empty document to be initialized",
+            "in": "query",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the empty document to be initialized",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "To retrieve all initialized properties, the 'properties: *' header must be used",
+        "operationId": "getEmptyDocumentById",
+        "summary": "Initialize an empty document with default properties given a document type and a parent"
+      }
+    },
+    "/id/{docId}/@pp/{pageProviderName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the page provider, ex: 'user_domains'",
+            "in": "path",
+            "name": "pageProviderName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getChildrenById",
+        "summary": "Execute a page provider on document by its id"
+      }
+    },
+    "/id/{docId}/@rendition/{renditionName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the rendition, ex: 'pdf'",
+            "in": "path",
+            "name": "renditionName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "operationId": "getRenditionById",
+        "summary": "Returns the specified rendition on document by its id"
+      }
+    },
+    "/id/{docId}/@search": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "NXQL query",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "A full text query",
+            "in": "query",
+            "name": "fullText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Field on which to order",
+            "in": "query",
+            "name": "orderBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "searchFromId",
+        "summary": "Get the children of a document by its id"
+      }
+    },
+    "/id/{docId}/@task": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "id of the user who is actor of the task",
+            "in": "query",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "id of the workflow instance the task belongs to",
+            "in": "query",
+            "name": "workflowInstanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
+            "in": "query",
+            "name": "workflowModelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/tasks"
+            }
+          }
+        },
+        "description": "Only task instance which you have permission to see will be returned",
+        "operationId": "getDocumentTasks",
+        "summary": "List tasks of the given document"
+      }
+    },
+    "/id/{docId}/@workflow": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflows"
+            }
+          }
+        },
+        "description": "Only workflow instances launched by current user will be returned",
+        "operationId": "getDocumentWorkflow",
+        "summary": "Get the workflow instances launched on the given document"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The workflow request describing the workflow instance to be created",
+            "in": "body",
+            "name": "workflowRequestBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/workflowRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflowRequest"
+            }
+          }
+        },
+        "operationId": "createWorkflowInstanceOnDocument",
+        "summary": "Start a workflow instance on the given document"
+      }
+    },
+    "/me": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "getLoggedInUser",
+        "summary": "Get the logged in user"
+      }
+    },
+    "/me/changepassword": {
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The body containing the new password along with the old password for security check",
+            "in": "body",
+            "name": "passwordbody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changePassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "changePassword",
+        "summary": "Change the logged in user's password"
+      }
+    },
+    "/oauth2/provider": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderDataList"
+            }
+          }
+        },
+        "operationId": "getOAuth2Providers",
+        "summary": "Retrieves the list of available OAuth2 providers."
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The OAuth2 provider to be added or updated.",
+            "in": "body",
+            "name": "oauth2ProviderBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderData"
+            }
+          }
+        },
+        "operationId": "addOAuth2Provider",
+        "summary": "Adds an OAuth2 provider."
+      }
+    },
+    "/oauth2/provider/{oauth2ProviderId}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 provider",
+            "in": "path",
+            "name": "oauth2ProviderId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderData"
+            }
+          }
+        },
+        "operationId": "getOauth2Provider",
+        "summary": "Retrieves OAuth2 provider data for the current user."
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The OAuth2 provider to be added or updated.",
+            "in": "body",
+            "name": "oauth2ProviderBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderData"
+            }
+          }
+        },
+        "operationId": "updateOAuth2Provider",
+        "summary": "Updates an OAuth2 provider."
+      }
+    },
+    "/oauth2/provider/{oauth2ProviderId}/token": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 provider",
+            "in": "path",
+            "name": "oauth2ProviderId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ProviderTokenData"
+            }
+          }
+        },
+        "operationId": "getOauth2ProviderTokenData",
+        "summary": "Retrieves a valid access token to the current user. A new token will be request if the current one is expired."
+      }
+    },
+    "/oauth2/token": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenDataList"
+            }
+          }
+        },
+        "operationId": "getOauth2Tokens",
+        "summary": "Retrieves all OAuth2 tokens."
+      }
+    },
+    "/oauth2/token/{oauth2ProviderId}/{username}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteOauth2Token",
+        "summary": "Delete an OAuth2 token."
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenData"
+            }
+          }
+        },
+        "operationId": "getOauth2Token",
+        "summary": "Gets an OAuth2 token."
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenData"
+            }
+          }
+        },
+        "operationId": "updateOauth2Token",
+        "summary": "Updates an OAuth2 token."
+      }
+    },
+    "/path/{docId}/@blob/{blobXpath}/@convert": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the converter to execute",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested extension of the converted Blob, such as 'pdf'",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "One of the 'name', 'type' or 'format' parameters must be passed.",
+        "operationId": "convertDocumentBlobById",
+        "summary": "Convert the Blob at the given xpath of the document"
+      }
+    },
+    "/path/{docPath}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "Only documents which you have permission can be deleted",
+        "operationId": "deleteDocumentByPath",
+        "summary": "Deletes a document by its path"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getDocumentByPath",
+        "summary": "Find a document by its path"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "operationId": "createDocumentByPath",
+        "summary": "Creates a document by its parent path"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
+        "operationId": "updateDocumentByPath",
+        "summary": "Updates a document by its path"
+      }
+    },
+    "/path/{docPath}/@acl": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Acp"
+            }
+          }
+        },
+        "operationId": "getACLByPath",
+        "summary": "View the ACL of a document given its path"
+      }
+    },
+    "/path/{docPath}/@audit": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/LogEntries"
+            }
+          }
+        },
+        "operationId": "getAuditByPath",
+        "summary": "View the audit trail of a document given its path"
+      }
+    },
+    "/path/{docPath}/@blob/{blobXpath}/@convert": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the converter to execute",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested extension of the converted Blob, such as 'pdf'",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "One of the 'name', 'type' or 'format' parameters must be passed.",
+        "operationId": "convertDocumentBlobByPath",
+        "summary": "Convert the Blob at the given xpath of the document"
+      }
+    },
+    "/path/{docPath}/@blob/{fieldPath}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The field path you want do download (ex: file:content)",
+            "in": "path",
+            "name": "fieldPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "getBlob",
+        "summary": "Get the main blob of a document by its path"
+      }
+    },
+    "/path/{docPath}/@bo/{adapterName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        },
+        "operationId": "getBOByPath",
+        "summary": "Get the business object adapter on a document given its path"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated business object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        },
+        "operationId": "updateBOByPath",
+        "summary": "Updates the business object adapter on a document given its path"
+      }
+    },
+    "/path/{docPath}/@bo/{adapterName}/{docName}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the document",
+            "in": "path",
+            "name": "docName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObject"
+            }
+          }
+        },
+        "operationId": "createBOByPath",
+        "summary": "Creates a document based on its business object"
+      }
+    },
+    "/path/{docPath}/@children": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getChildrenByPath",
+        "summary": "Get the children of a document by its path"
+      }
+    },
+    "/path/{docPath}/@children/@bo/{adapterName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the adapter",
+            "in": "path",
+            "name": "adapterName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/BusinessObjectList"
+            }
+          }
+        },
+        "description": "<ul><li>If a document can't be adapted, the resulting item will be null</li><li> This type of call works for every API endpoint that responds DocumentList (@search, @pp ...)</li></ul>",
+        "operationId": "getBOByPath",
+        "summary": "Get the list of business object of the children of a document by its path"
+      }
+    },
+    "/path/{docPath}/@children/@op/{operationName}": {
+      "post": {
+        "consumes": [
+          "application/json+nxrequest"
+        ],
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the operation",
+            "in": "path",
+            "name": "operationName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The operation parameters",
+            "in": "body",
+            "name": "operationParams",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OperationParams"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "This works on every API endpoint that return DocumentList",
+        "operationId": "executeOperationOnDocByPath",
+        "summary": "Execute an operation or a chain on the children of a document"
+      }
+    },
+    "/path/{docPath}/@convert": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the converter to execute",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The requested extension of the converted Blob, such as 'pdf'",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "One of the 'name', 'type' or 'format' parameters must be passed.",
+        "operationId": "convertDocumentMainBlobByPath",
+        "summary": "Convert the main Blob of the document"
+      }
+    },
+    "/path/{docPath}/@emptyWithDefault": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The type of the empty document to be initialized",
+            "in": "query",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the empty document to be initialized",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "To retrieve all initialized properties, the 'properties: *' header must be used",
+        "operationId": "getEmptyDocumentByPath",
+        "summary": "Initialize an empty document with default properties given a document type and a parent"
+      }
+    },
+    "/path/{docPath}/@op/{operationName}": {
+      "post": {
+        "consumes": [
+          "application/json+nxrequest"
+        ],
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the operation",
+            "in": "path",
+            "name": "operationName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The operation parameters",
+            "in": "body",
+            "name": "operationParams",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OperationParams"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "executeOperationOnDocByPath",
+        "summary": "Execute an operation or a chain on a document"
+      }
+    },
+    "/path/{docPath}/@pp/{pageProviderName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the page provider, ex: 'user_domains'",
+            "in": "path",
+            "name": "pageProviderName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getChildrenByPath",
+        "summary": "Execute a page provider on document by its path"
+      }
+    },
+    "/path/{docPath}/@rendition/{renditionName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the rendition, ex: 'pdf'",
+            "in": "path",
+            "name": "renditionName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "operationId": "getRenditionByPath",
+        "summary": "Returns the specified rendition on document by its path"
+      }
+    },
+    "/path/{docPath}/@search": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Index of the current page",
+            "format": "int64",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Size of the page to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Maximum results to retrieve",
+            "format": "int64",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property to sort by, for example 'dc:title'",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "NXQL query",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "A full text query",
+            "in": "query",
+            "name": "fullText",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Field on which to order",
+            "in": "query",
+            "name": "orderBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "searchFromPath",
+        "summary": "Get the children of a document by its path"
+      }
+    },
+    "/path/{docPath}/@task": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "id of the user who is actor of the task",
+            "in": "query",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "id of the workflow instance the task belongs to",
+            "in": "query",
+            "name": "workflowInstanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
+            "in": "query",
+            "name": "workflowModelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/tasks"
+            }
+          }
+        },
+        "description": "Only task instance which you have permission to see will be returned",
+        "operationId": "getDocumentRelatedWorkflowTasks",
+        "summary": "List tasks of the given document"
+      }
+    },
+    "/path/{docPath}/@workflow": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflows"
+            }
+          }
+        },
+        "description": "Only workflow instances launched by current user will be returned",
+        "operationId": "getDocumentWorkflow",
+        "summary": "Get the workflow instances launched on the given document"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The workflow request describing the workflow instance to be created",
+            "in": "body",
+            "name": "workflowRequestBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/workflowRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflowRequest"
+            }
+          }
+        },
+        "operationId": "createWorkflowInstanceOnDocument",
+        "summary": "Start a workflow instance on the given document"
+      }
+    },
+    "/query": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The query to perform. (By default: SELECT * FROM Document)",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The number of entries per page. (By default: 0)",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The selected page index. (By default: 0)",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The maximum entries. (By default: 200)",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order. (Example: sortOrder='DESC,ASC')",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/search"
+            }
+          }
+        },
+        "description": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+        "operationId": "query",
+        "summary": "Perform Named Page Provider on the repository"
+      }
+    },
+    "/query/{providerName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The page provider name.",
+            "in": "path",
+            "name": "providerName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The number of entries per page. (By default: 0)",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The selected page index. (By default: 0)",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The maximum entries. (By default: 200)",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order. (Example: sortOrder='DESC,ASC')",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/search"
+            }
+          }
+        },
+        "description": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+        "operationId": "pageprovider",
+        "summary": "Perform Named Page Provider on the repository"
+      }
+    },
+    "/repo/{repoId}/id/{docId}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "deleteDocumentById",
+        "summary": "Deletes a document by its id"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getDocumentById",
+        "summary": "Find a document by its id"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "operationId": "createDocumentById",
+        "summary": "Creates a document by its parent id"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
+        "operationId": "updateDocumentById",
+        "summary": "Updates a document by its id"
+      }
+    },
+    "/repo/{repoId}/path/{docPath}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "deleteDocumentByPath",
+        "summary": "Deletes a document by its path"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission to see will be returned",
+        "operationId": "getDocumentByPath",
+        "summary": "Find a document by its path"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        },
+        "operationId": "createDocumentByPath",
+        "summary": "Creates a document by its parent path"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The name of the repository",
+            "in": "path",
+            "name": "repoId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Path of the document, ex: 'default-domain'",
+            "in": "path",
+            "name": "docPath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated document object",
+            "in": "body",
+            "name": "document",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/document"
+            }
+          },
+          {
+            "description": "Schemas to be included in response",
+            "in": "header",
+            "name": "X-NXDocumentProperties",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Categories to be included in context parameters map",
+            "in": "header",
+            "name": "X-NXContext-Category",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
+            "in": "header",
+            "name": "X-Versioning-Option",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        },
+        "description": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
+        "operationId": "updateDocumentByPath",
+        "summary": "Updates a document by its path"
+      }
+    },
+    "/search/lang/{queryLanguage}/execute": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The query language.",
+            "in": "path",
+            "name": "queryLanguage",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The query to perform. (By default: SELECT * FROM Document)",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The number of entries per page. (By default: 0)",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The selected page index. (By default: 0)",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The maximum entries. (By default: 200)",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order. (Example: sortOrder='DESC,ASC')",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+        "operationId": "query",
+        "summary": "Performs a search query."
+      }
+    },
+    "/search/pp/{providerName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The page provider name.",
+            "in": "path",
+            "name": "providerName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/pageproviderdef"
+            }
+          }
+        },
+        "operationId": "getPageProviderDefinition",
+        "summary": "Gets the definition of a page provider."
+      }
+    },
+    "/search/pp/{providerName}/execute": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The page provider name.",
+            "in": "path",
+            "name": "providerName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The number of entries per page. (By default: 0)",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The selected page index. (By default: 0)",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The maximum entries. (By default: 200)",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order. (Example: sortOrder='DESC,ASC')",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "description": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+        "operationId": "pageprovider",
+        "summary": "Perform Named Page Provider on the repository"
+      }
+    },
+    "/search/saved": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the page provider.",
+            "in": "query",
+            "name": "pageProvider",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/savedsearches"
+            }
+          }
+        },
+        "operationId": "getSavedSearches",
+        "summary": "Returns the list of saved searches."
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The created or updated saved search object.",
+            "in": "body",
+            "name": "saved search",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/savedsearch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/savedsearch"
+            }
+          }
+        },
+        "operationId": "saveSearch",
+        "summary": "Saves a search."
+      }
+    },
+    "/search/saved/{searchId}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The search id.",
+            "in": "path",
+            "name": "searchId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteSavedSearch",
+        "summary": "Deletes the saved search with the supplied id."
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The search id.",
+            "in": "path",
+            "name": "searchId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/savedsearch"
+            }
+          }
+        },
+        "operationId": "getSavedSearch",
+        "summary": "Return the saved search with the supplied id."
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The search id.",
+            "in": "path",
+            "name": "searchId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The created or updated saved search object.",
+            "in": "body",
+            "name": "saved search",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/savedsearch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/savedsearch"
+            }
+          }
+        },
+        "operationId": "updateSavedSearch",
+        "summary": "Updates the saved search with the supplied id."
+      }
+    },
+    "/search/saved/{searchId}/execute": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The search id.",
+            "in": "path",
+            "name": "searchId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The number of entries per page. (By default: 0)",
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The selected page index. (By default: 0)",
+            "in": "query",
+            "name": "currentPageIndex",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The maximum entries. (By default: 200)",
+            "in": "query",
+            "name": "maxResults",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
+            "in": "query",
+            "name": "sortBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort order. (Example: sortOrder='DESC,ASC')",
+            "in": "query",
+            "name": "sortOrder",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/documents"
+            }
+          }
+        },
+        "operationId": "executeSavedSearch",
+        "summary": "Executes saved searches, returning its results."
+      }
+    },
+    "/task": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "id of the user who is actor of the task",
+            "in": "query",
+            "name": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "id of the workflow instance the task belongs to",
+            "in": "query",
+            "name": "workflowInstanceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
+            "in": "query",
+            "name": "workflowModelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/tasks"
+            }
+          }
+        },
+        "description": "Only task instance which you have permission to see will be returned",
+        "operationId": "getTasks",
+        "summary": "Query tasks by user and workflow ids"
+      }
+    },
+    "/task/{taskId}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the task",
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/task"
+            }
+          }
+        },
+        "description": "Only task instance which you have permission to see will be returned",
+        "operationId": "getTaskById",
+        "summary": "Get a task by its id"
+      }
+    },
+    "/task/{taskId}/delegate": {
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the task",
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "comma separated ids of the delegated actors",
+            "in": "query",
+            "name": "delegatedActors",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "comment",
+            "in": "query",
+            "name": "comment",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "See https://doc.nuxeo.com/x/34z1",
+        "operationId": "delegateTask",
+        "summary": "Delegate a task"
+      }
+    },
+    "/task/{taskId}/reassign": {
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the task",
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "comma separated ids of the new actors",
+            "in": "query",
+            "name": "actors",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "comment",
+            "in": "query",
+            "name": "comment",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "See https://doc.nuxeo.com/x/1YcZAQ",
+        "operationId": "reassignTask",
+        "summary": "Reassign a task"
+      }
+    },
+    "/task/{taskId}/{action}": {
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the task",
+            "in": "path",
+            "name": "taskId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "the action to be applied when completed the task. The action determines the transition to be followed and the next task within the workflow.",
+            "in": "path",
+            "name": "action",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The task completion describing the needed information to complete the task",
+            "in": "body",
+            "name": "taskCompletionRequestBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/taskCompletionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "Complete a workflow related task",
+        "operationId": "completeTask",
+        "summary": "Complete task"
+      }
+    },
+    "/token": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Application symbolic name",
+            "in": "query",
+            "name": "application",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/AuthenticationTokenList"
+            }
+          }
+        },
+        "operationId": "getTokens",
+        "summary": "Gets all readable authentication tokens"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Application symbolic name",
+            "in": "query",
+            "name": "application",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Device identifier",
+            "in": "query",
+            "name": "deviceId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Device description",
+            "in": "query",
+            "name": "deviceDescription",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Permission granted with the authentication token",
+            "in": "query",
+            "name": "permission",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "createToken",
+        "summary": "Acquire new authentication token"
+      }
+    },
+    "/token/{token}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Authentication Token",
+            "in": "path",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteToken",
+        "summary": "Delete an existing authentication token"
+      }
+    },
+    "/user": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The user to be created or updated",
+            "in": "body",
+            "name": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "createUser",
+        "summary": "Create a user"
+      }
+    },
+    "/user/search": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Query string",
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/users"
+            }
+          }
+        },
+        "operationId": "searchUser",
+        "summary": "Get a user by its name"
+      }
+    },
+    "/user/{userName}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "deleteUserByName",
+        "summary": "Delete a user by its name"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "getUserByName",
+        "summary": "Get a user by its name"
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The user to be created or updated",
+            "in": "body",
+            "name": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "updateUserByName",
+        "summary": "Update a user by its name"
+      }
+    },
+    "/user/{userName}/group/{groupName}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the group, ex: 'members'",
+            "in": "path",
+            "name": "groupName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        },
+        "operationId": "addAGroupToUser",
+        "summary": "Add a group to a user"
+      }
+    },
+    "/workflow": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflows"
+            }
+          }
+        },
+        "description": "Only workflow instances launched by current user will be returned",
+        "operationId": "getRunningWorkflowInstancesLaunchedByCurrentUser",
+        "summary": "Get the workflow instances launched by the current user"
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The workflow request describing the workflow instance to be created",
+            "in": "body",
+            "name": "workflowRequestBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/workflowRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflowRequest"
+            }
+          }
+        },
+        "operationId": "createWorkflowInstanceById",
+        "summary": "Start a workflow instance"
+      }
+    },
+    "/workflow/{workflowInstanceId}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the workflow instance",
+            "in": "path",
+            "name": "workflowInstanceId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "description": "Only workflow instance which you have permission to see will be returned",
+        "operationId": "deleteWorkflowInstanceById",
+        "summary": "Delete a workflow instance by its id"
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the workflow instance",
+            "in": "path",
+            "name": "workflowInstanceId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflow"
+            }
+          }
+        },
+        "description": "Only workflow instance which you have permission to see will be returned",
+        "operationId": "getWorkflowInstanceById",
+        "summary": "Find a workflow instance by its id"
+      }
+    },
+    "/workflow/{workflowInstanceId}/graph": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the workflow instance",
+            "in": "path",
+            "name": "workflowInstanceId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflowGraph"
+            }
+          }
+        },
+        "description": "Get the json serialization of a workflow instance graph",
+        "operationId": "getWorkflowModelGraph",
+        "summary": "Get the json serialization of a workflow instance graph"
+      }
+    },
+    "/workflowModel": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflows"
+            }
+          }
+        },
+        "operationId": "getWorkflowModels",
+        "summary": "Get the workflow models"
+      }
+    },
+    "/workflowModel/{modelName}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the workflow model",
+            "in": "path",
+            "name": "modelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflow"
+            }
+          }
+        },
+        "operationId": "getWorkflowModel",
+        "summary": "Find a workflow model by its name"
+      }
+    },
+    "/workflowModel/{modelName}/graph": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the workflow model",
+            "in": "path",
+            "name": "modelName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/workflowGraph"
+            }
+          }
+        },
+        "description": "Get the json serialization of a workflow model graph",
+        "operationId": "getWorkflowModelGraph",
+        "summary": "Get the json serialization of a workflow model graph"
+      }
+    }
+  },
+  "definitions": {
+    "Ace": {
+      "properties": {
+        "granted": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "permission": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "username": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "granted",
+        "permission",
+        "username"
+      ],
+      "uniqueItems": false
+    },
+    "Acl": {
+      "properties": {
+        "ace": {
+          "items": {
+            "$ref": "#/definitions/Ace"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "ace",
+        "name"
+      ],
+      "uniqueItems": false
+    },
+    "Acp": {
+      "properties": {
+        "acls": {
+          "items": {
+            "$ref": "#/definitions/Acl"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "AuthenticationTokenList": {
+      "properties": {
+        "token": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "url": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "userName": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "token",
+        "url",
+        "userName"
+      ],
+      "uniqueItems": false
+    },
+    "BusinessObject": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "value": {
+          "type": "object",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "BusinessObjectList": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/BusinessObject"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "GroupRef": {
+      "properties": {
+        "label": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "url": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "label",
+        "name",
+        "url"
+      ],
+      "uniqueItems": false
+    },
+    "LogEntries": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/LogEntry"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "LogEntry": {
+      "properties": {
+        "category": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "comment": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "docLifeCycle": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "docPath": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "docType": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "docUUID": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "eventDate": {
+          "format": "date-time",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "eventId": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "logDate": {
+          "format": "date-time",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "principalName": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "repositoryId": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "category",
+        "comment",
+        "docLifeCycle",
+        "docPath",
+        "docType",
+        "docUUID",
+        "entity-type",
+        "eventDate",
+        "eventId",
+        "logDate",
+        "principalName",
+        "repositoryId"
+      ],
+      "uniqueItems": false
+    },
+    "OperationDescription": {
+      "properties": {
+        "category": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "description": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "label": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "params": {
+          "items": {
+            "$ref": "#/definitions/OperationParamDescription"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "requires": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "signature": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "url": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "params",
+        "signature",
+        "url"
+      ],
+      "uniqueItems": false
+    },
+    "OperationDescriptionList": {
+      "properties": {
+        "codec": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "operations": {
+          "items": {
+            "$ref": "#/definitions/OperationDescription"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "path": {
+          "$ref": "#/definitions/container",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "codec",
+        "operations",
+        "path"
+      ],
+      "uniqueItems": false
+    },
+    "OperationParamDescription": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "order": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "required": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "widget": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "description",
+        "name",
+        "required",
+        "type"
+      ],
+      "uniqueItems": false
+    },
+    "OperationParams": {
+      "properties": {
+        "context": {
+          "type": "object",
+          "uniqueItems": false
+        },
+        "params": {
+          "type": "object",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "context",
+        "params"
+      ],
+      "uniqueItems": false
+    },
+    "changePassword": {
+      "properties": {
+        "newPassword": {
+          "type": "string"
+        },
+        "oldPassword": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "newPassword",
+        "oldPassword"
+      ]
+    },
+    "directoryEntries": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/directoryEntry"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "directoryEntry": {
+      "properties": {
+        "directoryName": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "properties": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "directoryName",
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "docType": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "facets": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string"
+        },
+        "schemas": {
+          "items": {},
+          "type": "array"
+        }
+      },
+      "required": [
+        "entity-type",
+        "facets",
+        "name",
+        "parent",
+        "schemas"
+      ]
+    },
+    "document": {
+      "properties": {
+        "changeToken": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "contextParameters": {
+          "type": "object",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "facets": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lastModified": {
+          "format": "date",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "path": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "properties": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": true
+        },
+        "repository": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "state": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "title": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "uid": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "versionLabel": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "documents": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/Document"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "facet": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "schemas": {
+          "items": {},
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "layoutResource": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "url": {
+          "$ref": "#/definitions/layoutResource",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "name",
+        "url"
+      ],
+      "uniqueItems": false
+    },
+    "oauth2ProviderData": {
+      "properties": {
+        "authorizationServerURL": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "authorizationURL": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "clientId": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "clientSecret": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "description": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "isAuthorized": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "serviceName": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "tokenServerURL": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "userAuthorizationURL": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "userId": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "serviceName"
+      ],
+      "uniqueItems": false
+    },
+    "oauth2ProviderDataList": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/oauth2ProviderData"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "oauth2ProviderTokenData": {
+      "properties": {
+        "token": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "token"
+      ],
+      "uniqueItems": false
+    },
+    "oauth2TokenData": {
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "creationDate": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "isShared": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "nuxeoLogin": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "serviceLogin": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "serviceName": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "sharedWith": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "entity-type",
+        "nuxeoLogin",
+        "serviceLogin",
+        "serviceName"
+      ],
+      "uniqueItems": false
+    },
+    "oauth2TokenDataList": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/oauth2TokenData"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "query": {
+      "properties": {
+        "label": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "url": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "label",
+        "name",
+        "url"
+      ],
+      "uniqueItems": false
+    },
+    "savedsearch": {
+      "properties": {
+        "currentPageIndex": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "maxResults": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "pageProviderName": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "params": {
+          "type": "object",
+          "uniqueItems": false
+        },
+        "query": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "queryLanguage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "queryParams": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "sortBy": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "sortOrder": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "title": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "title"
+      ],
+      "uniqueItems": false
+    },
+    "savedsearches": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/savedsearch"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "schema": {
+      "properties": {
+        "@prefix": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "object"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@prefix",
+        "fields",
+        "name"
+      ]
+    },
+    "task": {
+      "properties": {
+        "actors": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "comments": {
+          "items": {
+            "$ref": "#/definitions/taskComments"
+          },
+          "type": "array"
+        },
+        "created": {
+          "format": "date",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "directive": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "dueDate": {
+          "format": "date",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "nodeName": {
+          "format": "date",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "state": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "targetDocumentIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "taskInfo": {
+          "$ref": "#/definitions/taskInfo",
+          "uniqueItems": true
+        },
+        "type": {
+          "format": "date",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "variables": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": true
+        },
+        "workflowId": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "taskAction": {
+      "properties": {
+        "label": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "url": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "label",
+        "name",
+        "url"
+      ],
+      "uniqueItems": false
+    },
+    "taskComments": {
+      "properties": {
+        "author": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "date": {
+          "format": "date",
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "author",
+        "date"
+      ],
+      "uniqueItems": false
+    },
+    "taskCompletionRequest": {
+      "properties": {
+        "comment": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "nodeVariables": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": true
+        },
+        "worflowVariables": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "taskInfo": {
+      "properties": {
+        "actions": {
+          "items": {
+            "$ref": "#/definitions/taskAction"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "layoutResource": {
+          "$ref": "#/definitions/layoutResource",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "actions",
+        "layoutResource"
+      ],
+      "uniqueItems": false
+    },
+    "tasks": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/task"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "user": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "extendedGroups": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/GroupRef"
+          },
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "isAdministrator": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isAnonymous": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "properties": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "id",
+        "isAdministrator",
+        "isAnonymous"
+      ],
+      "uniqueItems": false
+    },
+    "userList": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/user"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    },
+    "workflow": {
+      "properties": {
+        "attachedDocumentIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "initiator": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "variables": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "workflowGraph": {
+      "uniqueItems": false
+    },
+    "workflowRequest": {
+      "properties": {
+        "documentIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "worflowVariables": {
+          "$ref": "#/definitions/container",
+          "items": {
+            "$ref": "#/definitions/Property"
+          },
+          "uniqueItems": true
+        },
+        "workflowModelName": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "workflows": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/workflow"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
+    }
+  }
+}
