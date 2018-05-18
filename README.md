@@ -8,6 +8,10 @@ To generate the files, run a local server (or update the `get.sh` script):
 % ./get.sh
 ```
 
+# Installation
+
+Load the Swagger files from the `output` directory into the [Swagger Editor](https://editor.swagger.io/) or your favorite REST tool.  Use the 'Import' command in [Postman](https://www.getpostman.com/) to load the 'v2.0' collections.
+
 # Licensing
 
 Most of the source code in the Nuxeo Platform is copyright Nuxeo and
