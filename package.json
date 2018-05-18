@@ -18,6 +18,7 @@
   "dependencies": {
     "api-spec-converter": "^2.7.4",
     "array-union": "^1.0.2",
-    "deep-merge": "^1.0.0"
+    "deep-merge": "^1.0.0",
+    "jspath": "^0.4.0"
   }
 }
