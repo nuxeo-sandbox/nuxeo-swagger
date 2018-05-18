@@ -2,13 +2,21 @@
 
 This repository contains scripts to convert the Nuxeo Swagger 1.2 collection to a single file and render it with Swagger 2.0. 
 
+# Setup
+
+Set up node dependencies with `npm install`.
+
+# Build
+
 To generate the files, run a local server (or update the `get.sh` script):
 
 ```
-% ./get.sh
+./get.sh
 ```
 
-# Installation
+You may wish to re-generate the data if you load custom operations.
+
+# Install
 
 Load the Swagger files from the `output` directory into the [Swagger Editor](https://editor.swagger.io/) or your favorite REST tool.  Use the 'Import' command in [Postman](https://www.getpostman.com/) to load the 'v2.0' collections.
 
