@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://localhost:8080/nuxeo/site/api/v1",
+  "basePath": "https://nightly.nuxeo.com/nuxeo/site/api/v1",
   "resourcePath": "/workflowModel",
   "produces": [
     "application/json",
@@ -685,14 +685,14 @@
               "name": "workflowInstanceId",
               "description": "id of the workflow instance the task belongs to",
               "dataType": "string",
-              "required": true
+              "required": false
             },
             {
               "paramType": "query",
               "name": "workflowModelName",
               "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
               "dataType": "string",
-              "required": true
+              "required": false
             }
           ],
           "summary": "Query tasks by user and workflow ids",
@@ -905,14 +905,14 @@
               "name": "workflowInstanceId",
               "description": "id of the workflow instance the task belongs to",
               "dataType": "string",
-              "required": true
+              "required": false
             },
             {
               "paramType": "query",
               "name": "workflowModelName",
               "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
               "dataType": "string",
-              "required": true
+              "required": false
             }
           ],
           "summary": "List tasks of the given document",
@@ -958,14 +958,14 @@
               "name": "workflowInstanceId",
               "description": "id of the workflow instance the task belongs to",
               "dataType": "string",
-              "required": true
+              "required": false
             },
             {
               "paramType": "query",
               "name": "workflowModelName",
               "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
               "dataType": "string",
-              "required": true
+              "required": false
             }
           ],
           "summary": "List tasks of the given document",
@@ -1304,6 +1304,66 @@
       ]
     },
     {
+      "path": "/search/lang/{queryLanguage}/bulk/{actionId}",
+      "description": "Executes bulk action.",
+      "operations": [
+        {
+          "method": "POST",
+          "nickname": "querybulk",
+          "type": "bulkstatus",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "queryLanguage",
+              "description": "The query language.",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "query",
+              "description": "The query to perform. (By default: SELECT * FROM Document)",
+              "dataType": "string",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "queryParams",
+              "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+              "dataType": "string",
+              "required": false
+            },
+            {
+              "paramType": "path",
+              "name": "actionId",
+              "description": "Id of the bulk action",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "bulk parameters",
+              "description": "The bulk action parameters.",
+              "dataType": "string",
+              "required": false
+            }
+          ],
+          "summary": "Performs a bulk action on the query result.",
+          "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
       "path": "/search/pp/{providerName}/execute",
       "description": "Executes a page provider.",
       "operations": [
@@ -1370,6 +1430,59 @@
             }
           ],
           "summary": "Perform Named Page Provider on the repository",
+          "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/search/pp/{providerName}/bulk/{actionId}",
+      "description": "Executes bulk action.",
+      "operations": [
+        {
+          "method": "POST",
+          "nickname": "pageproviderbulk",
+          "type": "bulkstatus",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "providerName",
+              "description": "The page provider name.",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "queryParams",
+              "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+              "dataType": "string",
+              "required": false
+            },
+            {
+              "paramType": "path",
+              "name": "actionId",
+              "description": "Id of the bulk action",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "bulk parameters",
+              "description": "The bulk action parameters.",
+              "dataType": "string",
+              "required": false
+            }
+          ],
+          "summary": "Performs a bulk action on the query result.",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
           "errorResponses": [
             {
@@ -1618,6 +1731,51 @@
             }
           ],
           "summary": "Executes saved searches, returning its results.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/search/saved/{searchId}/bulk/{actionId}",
+      "description": "Executes a bulk action.",
+      "operations": [
+        {
+          "method": "POST",
+          "nickname": "savedsearchbulk",
+          "type": "bulkstatus",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "searchId",
+              "description": "The search id.",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "actionId",
+              "description": "Id of the bulk action",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "bulk parameters",
+              "description": "The bulk action parameters.",
+              "dataType": "string",
+              "required": false
+            }
+          ],
+          "summary": "Performs a bulk action on the saved search result.",
           "errorResponses": [
             {
               "reason": "Not Authorized to get document",
@@ -2598,6 +2756,13 @@
           "type": "oauth2ProviderData",
           "parameters": [
             {
+              "paramType": "path",
+              "name": "oauth2ProviderId",
+              "description": "Name of the OAuth2 provider",
+              "dataType": "string",
+              "required": true
+            },
+            {
               "paramType": "body",
               "name": "oauth2ProviderBody",
               "description": "The OAuth2 provider to be added or updated.",
@@ -2652,7 +2817,7 @@
     },
     {
       "path": "/oauth2/token",
-      "description": "Retrieves OAuth2 tokens.",
+      "description": "Retrieves all OAuth2 tokens.",
       "operations": [
         {
           "method": "GET",
@@ -2673,14 +2838,43 @@
       ]
     },
     {
-      "path": "/oauth2/token/{oauth2ProviderId}/{username}",
-      "description": "Gets, updates and deletes OAuth2 tokens.",
+      "path": "/oauth2/token/provider",
+      "description": "Retrieves OAuth2 provider tokens for the current user.",
       "operations": [
         {
           "method": "GET",
-          "nickname": "getOauth2Token",
+          "nickname": "getOauth2UserProviderTokens",
+          "type": "oauth2TokenDataList",
+          "summary": "Retrieves all OAuth2 provider tokens for the current user.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/oauth2/token/provider/{oauth2ProviderId}/user/{username}",
+      "description": "Gets, updates and deletes OAuth2 provider tokens.",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "getOauth2ProviderToken",
           "type": "oauth2TokenData",
           "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ProviderId",
+              "description": "Name of the OAuth2 provider",
+              "dataType": "string",
+              "required": true
+            },
             {
               "paramType": "path",
               "name": "userName",
@@ -2689,7 +2883,7 @@
               "required": true
             }
           ],
-          "summary": "Gets an OAuth2 token.",
+          "summary": "Gets an OAuth2 provider token.",
           "errorResponses": [
             {
               "reason": "Not Authorized to get document",
@@ -2703,9 +2897,16 @@
         },
         {
           "method": "PUT",
-          "nickname": "updateOauth2Token",
+          "nickname": "updateOauth2ProviderToken",
           "type": "oauth2TokenData",
           "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ProviderId",
+              "description": "Name of the OAuth2 provider",
+              "dataType": "string",
+              "required": true
+            },
             {
               "paramType": "path",
               "name": "userName",
@@ -2714,7 +2915,7 @@
               "required": true
             }
           ],
-          "summary": "Updates an OAuth2 token.",
+          "summary": "Updates an OAuth2 provider token.",
           "errorResponses": [
             {
               "reason": "Not Authorized to get document",
@@ -2728,8 +2929,15 @@
         },
         {
           "method": "DELETE",
-          "nickname": "deleteOauth2Token",
+          "nickname": "deleteOauth2ProviderToken",
           "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ProviderId",
+              "description": "Name of the OAuth2 provider",
+              "dataType": "string",
+              "required": true
+            },
             {
               "paramType": "path",
               "name": "userName",
@@ -2738,7 +2946,183 @@
               "required": true
             }
           ],
-          "summary": "Delete an OAuth2 token.",
+          "summary": "Delete an OAuth2 provider token.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/oauth2/token/client",
+      "description": "Retrieves OAuth2 client tokens for the current user.",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "getOauth2UserClientTokens",
+          "type": "oauth2TokenDataList",
+          "summary": "Retrieves all OAuth2 client tokens for the current user.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/oauth2/token/client/{oauth2ClientId}/user/{username}",
+      "description": "Retrieves updates, and deletes OAuth2 client tokens.",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "getOauth2ClientToken",
+          "type": "oauth2TokenData",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ClientId",
+              "description": "Name of the OAuth2 client",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "userName",
+              "description": "Username of the user, ex: 'Administrator'",
+              "dataType": "string",
+              "required": true
+            }
+          ],
+          "summary": "Retrieves a OAuth2 client token.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "nickname": "updateOauth2ClientToken",
+          "type": "oauth2TokenData",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ClientId",
+              "description": "Name of the OAuth2 client",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "userName",
+              "description": "Username of the user, ex: 'Administrator'",
+              "dataType": "string",
+              "required": true
+            }
+          ],
+          "summary": "Updates an OAuth2 client token.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "nickname": "deleteOauth2ClientToken",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ClientId",
+              "description": "Name of the OAuth2 client",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "userName",
+              "description": "Username of the user, ex: 'Administrator'",
+              "dataType": "string",
+              "required": true
+            }
+          ],
+          "summary": "Deletes a OAuth2 client token.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/oauth2/client",
+      "description": "Retrieves all OAuth2 clients.",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "getOauth2Clients",
+          "type": "oauth2ClientDataList",
+          "summary": "Retrieves a OAuth2 client.",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/oauth2/client/{oauth2ClientId}",
+      "description": "Retrieves a OAuth2 client.",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "getOauth2Client",
+          "type": "oauth2ClientData",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "oauth2ClientId",
+              "description": "Name of the OAuth2 client",
+              "dataType": "string",
+              "required": true
+            }
+          ],
+          "summary": "Retrieves a OAuth2 client.",
           "errorResponses": [
             {
               "reason": "Not Authorized to get document",
@@ -4978,6 +5362,177 @@
       ]
     },
     {
+      "path": "/id/{docId}/@annotation",
+      "description": "Create or update an annotation",
+      "operations": [
+        {
+          "method": "POST",
+          "nickname": "createAnnotation",
+          "type": "annotation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "docId",
+              "description": "Id of the document",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "Annotation",
+              "description": "Annotation object that is created or updated.",
+              "dataType": "annotation",
+              "required": true
+            }
+          ],
+          "summary": "Create an annotation on a given document",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        },
+        {
+          "method": "PUT",
+          "nickname": "updateAnnotation",
+          "type": "annotation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "docId",
+              "description": "Id of the document",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "body",
+              "name": "Annotation",
+              "description": "Annotation object that is created or updated.",
+              "dataType": "annotation",
+              "required": true
+            }
+          ],
+          "summary": "Update an annotation on a given document",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "nickname": "getAnnotations",
+          "type": "annotationList",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "docId",
+              "description": "Id of the document",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "fieldPath",
+              "description": "The field path you want do download (ex: file:content)",
+              "dataType": "string",
+              "required": false
+            }
+          ],
+          "summary": "Get all annotations on a given document blob",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/id/{docId}/@annotation/{annotationId}",
+      "description": "Retrieve or delete an annotation",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "getAnnotation",
+          "type": "annotation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "docId",
+              "description": "Id of the document",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "annotationId",
+              "description": "Id of the annotation",
+              "dataType": "string",
+              "required": true
+            }
+          ],
+          "summary": "Retrieve an annotation on a document given its id",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "nickname": "deleteAnnotation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "docId",
+              "description": "Id of the document",
+              "dataType": "string",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "annotationId",
+              "description": "Id of the annotation",
+              "dataType": "string",
+              "required": true
+            }
+          ],
+          "summary": "Delete an annotation on a document given its id",
+          "errorResponses": [
+            {
+              "reason": "Not Authorized to get document",
+              "code": 401
+            },
+            {
+              "reason": "Document not found",
+              "code": 404
+            }
+          ]
+        }
+      ]
+    },
+    {
       "path": "/path/{docPath}/@acl",
       "description": "View the ACLs of a document",
       "operations": [
@@ -5097,6 +5652,106 @@
           "items": {
             "$ref": "Acl"
           }
+        }
+      }
+    },
+    "annotation": {
+      "id": "annotation",
+      "uniqueItems": false,
+      "properties": {
+        "entity-type": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "id": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "documentId": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "xpath": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "color": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": false
+        },
+        "date": {
+          "uniqueItems": false,
+          "type": "date-time",
+          "required": true
+        },
+        "flags": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "lastModifier": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "page": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": true
+        },
+        "position": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "creationDate": {
+          "uniqueItems": false,
+          "type": "date-time",
+          "required": true
+        },
+        "opacity": {
+          "uniqueItems": false,
+          "type": "double",
+          "required": true
+        },
+        "subject": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "security": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "annotationList": {
+      "id": "annotationList",
+      "uniqueItems": false,
+      "properties": {
+        "entity-type": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "entries": {
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "annotation"
+          },
+          "required": true
         }
       }
     },
@@ -6435,6 +7090,136 @@
         "token": {
           "uniqueItems": false,
           "type": "string",
+          "required": true
+        }
+      }
+    },
+    "oauth2ClientData": {
+      "id": "oauth2ClientData",
+      "uniqueItems": false,
+      "properties": {
+        "entity-type": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "id": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "isEnabled": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        }
+      }
+    },
+    "oauth2ClientDataList": {
+      "id": "oauth2ClientDataList",
+      "uniqueItems": false,
+      "properties": {
+        "entity-type": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": true
+        },
+        "isPaginable": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        },
+        "resultCount": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "pageSize": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "maxPageSize": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "currentPageSize": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "currentPageIndex": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "currentPageOffset": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "numberOfPages": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "isPreviousPageAvailable": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        },
+        "isNext": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        },
+        "isLastPageAvailable": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        },
+        "isSortable": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        },
+        "hasError": {
+          "uniqueItems": false,
+          "type": "boolean",
+          "required": false
+        },
+        "erroMessage": {
+          "uniqueItems": false,
+          "type": "string",
+          "required": false
+        },
+        "totalSize": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "pageIndex": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "pageCount": {
+          "uniqueItems": false,
+          "type": "long",
+          "required": false
+        },
+        "entries": {
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "oauth2ClientData"
+          },
           "required": true
         }
       }

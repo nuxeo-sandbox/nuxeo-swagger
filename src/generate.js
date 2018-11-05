@@ -1,10 +1,7 @@
 'use strict'
 
 var jspath = require('jspath');
-
-function uniqueMerge(destinationArray, sourceArray, options) {
-	return union(sourceArray, destinationArray);
-}
+var sortObjectsArray = require('sort-objects-array');
 
 var swagger = {
 	"swagger": "2.0",
@@ -15,12 +12,17 @@ var swagger = {
 	"host": "localhost:8080",
 	"basePath": "/nuxeo/site/api/v1/automation",
 	"schemes": [
-		"http"
+		"http",
+		"https"
 	],
 	"paths": {},
 	"definitions": {
 		"OperationParams": {
 			"properties": {
+				"input": {
+					"type": "string",
+					"uniqueItems": false
+				},
 				"context": {
 					"type": "object",
 					"uniqueItems": false
@@ -39,8 +41,10 @@ var swagger = {
 	}
 };
 process.argv.slice(2).forEach(function (i) {
-	var js = require('./' + i);
-	jspath.apply(".operations", js).forEach(function (i) {
+	var js = require('../' + i);
+	var selected = jspath.apply(".operations", js);
+	var sorted = sortObjectsArray(selected, 'id');
+	sorted.forEach(function (i) {
 		var op = {
 			"post": {
 				"consumes": [
@@ -51,7 +55,7 @@ process.argv.slice(2).forEach(function (i) {
 					"application/json+nxentity"
 				],
 				"parameters": [{
-					"description": "The operation parameters",
+					"description": "{ \"input\": \"\", \"params\": {}, \"context\": {} }",
 					"in": "body",
 					"name": "operationParams",
 					"required": true,

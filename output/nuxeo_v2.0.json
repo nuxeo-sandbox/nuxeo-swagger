@@ -4,10 +4,11 @@
     "title": "Nuxeo REST API",
     "version": "9.10"
   },
-  "host": "localhost:8080",
+  "host": "nightly.nuxeo.com",
   "basePath": "/nuxeo/site/api/v1",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/id/{docId}/@acl": {
@@ -67,6 +68,186 @@
         "summary": "View the ACL of a document given its path",
         "tags": [
           "aclAdapter.json"
+        ]
+      }
+    },
+    "/id/{docId}/@annotation": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The field path you want do download (ex: file:content)",
+            "in": "path",
+            "name": "fieldPath",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/annotationList"
+            }
+          }
+        },
+        "operationId": "getAnnotations",
+        "summary": "Get all annotations on a given document blob",
+        "tags": [
+          "annotationAdapter.json"
+        ]
+      },
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Annotation object that is created or updated.",
+            "in": "body",
+            "name": "Annotation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/annotation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/annotation"
+            }
+          }
+        },
+        "operationId": "createAnnotation",
+        "summary": "Create an annotation on a given document",
+        "tags": [
+          "annotationAdapter.json"
+        ]
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Annotation object that is created or updated.",
+            "in": "body",
+            "name": "Annotation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/annotation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/annotation"
+            }
+          }
+        },
+        "operationId": "updateAnnotation",
+        "summary": "Update an annotation on a given document",
+        "tags": [
+          "annotationAdapter.json"
+        ]
+      }
+    },
+    "/id/{docId}/@annotation/{annotationId}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the annotation",
+            "in": "path",
+            "name": "annotationId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteAnnotation",
+        "summary": "Delete an annotation on a document given its id",
+        "tags": [
+          "annotationAdapter.json"
+        ]
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Id of the document",
+            "in": "path",
+            "name": "docId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the annotation",
+            "in": "path",
+            "name": "annotationId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/annotation"
+            }
+          }
+        },
+        "operationId": "getAnnotation",
+        "summary": "Retrieve an annotation on a document given its id",
+        "tags": [
+          "annotationAdapter.json"
         ]
       }
     },
@@ -2284,6 +2465,57 @@
         ]
       }
     },
+    "/oauth2/client": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ClientDataList"
+            }
+          }
+        },
+        "operationId": "getOauth2Clients",
+        "summary": "Retrieves a OAuth2 client.",
+        "tags": [
+          "oauth2.json"
+        ]
+      }
+    },
+    "/oauth2/client/{oauth2ClientId}": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 client",
+            "in": "path",
+            "name": "oauth2ClientId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2ClientData"
+            }
+          }
+        },
+        "operationId": "getOauth2Client",
+        "summary": "Retrieves a OAuth2 client.",
+        "tags": [
+          "oauth2.json"
+        ]
+      }
+    },
     "/oauth2/provider": {
       "get": {
         "produces": [
@@ -2371,6 +2603,13 @@
         ],
         "parameters": [
           {
+            "description": "Name of the OAuth2 provider",
+            "in": "path",
+            "name": "oauth2ProviderId",
+            "required": true,
+            "type": "string"
+          },
+          {
             "description": "The OAuth2 provider to be added or updated.",
             "in": "body",
             "name": "oauth2ProviderBody",
@@ -2446,13 +2685,41 @@
         ]
       }
     },
-    "/oauth2/token/{oauth2ProviderId}/{username}": {
+    "/oauth2/token/client": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenDataList"
+            }
+          }
+        },
+        "operationId": "getOauth2UserClientTokens",
+        "summary": "Retrieves all OAuth2 client tokens for the current user.",
+        "tags": [
+          "oauth2.json"
+        ]
+      }
+    },
+    "/oauth2/token/client/{oauth2ClientId}/user/{username}": {
       "delete": {
         "produces": [
           "application/json",
           "application/json+nxentity"
         ],
         "parameters": [
+          {
+            "description": "Name of the OAuth2 client",
+            "in": "path",
+            "name": "oauth2ClientId",
+            "required": true,
+            "type": "string"
+          },
           {
             "description": "Username of the user, ex: 'Administrator'",
             "in": "path",
@@ -2466,8 +2733,8 @@
             "description": "No response was specified"
           }
         },
-        "operationId": "deleteOauth2Token",
-        "summary": "Delete an OAuth2 token.",
+        "operationId": "deleteOauth2ClientToken",
+        "summary": "Deletes a OAuth2 client token.",
         "tags": [
           "oauth2.json"
         ]
@@ -2479,33 +2746,12 @@
         ],
         "parameters": [
           {
-            "description": "Username of the user, ex: 'Administrator'",
+            "description": "Name of the OAuth2 client",
             "in": "path",
-            "name": "userName",
+            "name": "oauth2ClientId",
             "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "No response was specified",
-            "schema": {
-              "$ref": "#/definitions/oauth2TokenData"
-            }
-          }
-        },
-        "operationId": "getOauth2Token",
-        "summary": "Gets an OAuth2 token.",
-        "tags": [
-          "oauth2.json"
-        ]
-      },
-      "put": {
-        "produces": [
-          "application/json",
-          "application/json+nxentity"
-        ],
-        "parameters": [
+          },
           {
             "description": "Username of the user, ex: 'Administrator'",
             "in": "path",
@@ -2522,8 +2768,168 @@
             }
           }
         },
-        "operationId": "updateOauth2Token",
-        "summary": "Updates an OAuth2 token.",
+        "operationId": "getOauth2ClientToken",
+        "summary": "Retrieves a OAuth2 client token.",
+        "tags": [
+          "oauth2.json"
+        ]
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 client",
+            "in": "path",
+            "name": "oauth2ClientId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenData"
+            }
+          }
+        },
+        "operationId": "updateOauth2ClientToken",
+        "summary": "Updates an OAuth2 client token.",
+        "tags": [
+          "oauth2.json"
+        ]
+      }
+    },
+    "/oauth2/token/provider": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenDataList"
+            }
+          }
+        },
+        "operationId": "getOauth2UserProviderTokens",
+        "summary": "Retrieves all OAuth2 provider tokens for the current user.",
+        "tags": [
+          "oauth2.json"
+        ]
+      }
+    },
+    "/oauth2/token/provider/{oauth2ProviderId}/user/{username}": {
+      "delete": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 provider",
+            "in": "path",
+            "name": "oauth2ProviderId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          }
+        },
+        "operationId": "deleteOauth2ProviderToken",
+        "summary": "Delete an OAuth2 provider token.",
+        "tags": [
+          "oauth2.json"
+        ]
+      },
+      "get": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 provider",
+            "in": "path",
+            "name": "oauth2ProviderId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenData"
+            }
+          }
+        },
+        "operationId": "getOauth2ProviderToken",
+        "summary": "Gets an OAuth2 provider token.",
+        "tags": [
+          "oauth2.json"
+        ]
+      },
+      "put": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the OAuth2 provider",
+            "in": "path",
+            "name": "oauth2ProviderId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Username of the user, ex: 'Administrator'",
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/oauth2TokenData"
+            }
+          }
+        },
+        "operationId": "updateOauth2ProviderToken",
+        "summary": "Updates an OAuth2 provider token.",
         "tags": [
           "oauth2.json"
         ]
@@ -3426,6 +3832,67 @@
         ]
       }
     },
+    "/search/lang/{queryLanguage}/bulk/{actionId}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The query language.",
+            "in": "path",
+            "name": "queryLanguage",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The query to perform. (By default: SELECT * FROM Document)",
+            "in": "query",
+            "name": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Id of the bulk action",
+            "in": "path",
+            "name": "actionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The bulk action parameters.",
+            "in": "body",
+            "name": "bulk parameters",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/bulkstatus"
+            }
+          }
+        },
+        "description": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+        "operationId": "querybulk",
+        "summary": "Performs a bulk action on the query result.",
+        "tags": [
+          "search.json"
+        ]
+      }
+    },
     "/search/lang/{queryLanguage}/execute": {
       "get": {
         "produces": [
@@ -3539,6 +4006,60 @@
         },
         "operationId": "getPageProviderDefinition",
         "summary": "Gets the definition of a page provider.",
+        "tags": [
+          "search.json"
+        ]
+      }
+    },
+    "/search/pp/{providerName}/bulk/{actionId}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The page provider name.",
+            "in": "path",
+            "name": "providerName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
+            "in": "query",
+            "name": "queryParams",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Id of the bulk action",
+            "in": "path",
+            "name": "actionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The bulk action parameters.",
+            "in": "body",
+            "name": "bulk parameters",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/bulkstatus"
+            }
+          }
+        },
+        "description": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
+        "operationId": "pageproviderbulk",
+        "summary": "Performs a bulk action on the query result.",
         "tags": [
           "search.json"
         ]
@@ -3772,6 +4293,52 @@
         },
         "operationId": "updateSavedSearch",
         "summary": "Updates the saved search with the supplied id.",
+        "tags": [
+          "search.json"
+        ]
+      }
+    },
+    "/search/saved/{searchId}/bulk/{actionId}": {
+      "post": {
+        "produces": [
+          "application/json",
+          "application/json+nxentity"
+        ],
+        "parameters": [
+          {
+            "description": "The search id.",
+            "in": "path",
+            "name": "searchId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Id of the bulk action",
+            "in": "path",
+            "name": "actionId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The bulk action parameters.",
+            "in": "body",
+            "name": "bulk parameters",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/bulkstatus"
+            }
+          }
+        },
+        "operationId": "savedsearchbulk",
+        "summary": "Performs a bulk action on the saved search result.",
         "tags": [
           "search.json"
         ]
@@ -4111,14 +4678,14 @@
             "description": "id of the workflow instance the task belongs to",
             "in": "query",
             "name": "workflowInstanceId",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
             "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
             "in": "query",
             "name": "workflowModelName",
-            "required": true,
+            "required": false,
             "type": "string"
           }
         ],
@@ -4163,14 +4730,14 @@
             "description": "id of the workflow instance the task belongs to",
             "in": "query",
             "name": "workflowInstanceId",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
             "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
             "in": "query",
             "name": "workflowModelName",
-            "required": true,
+            "required": false,
             "type": "string"
           }
         ],
@@ -4208,14 +4775,14 @@
             "description": "id of the workflow instance the task belongs to",
             "in": "query",
             "name": "workflowInstanceId",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
             "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
             "in": "query",
             "name": "workflowModelName",
-            "required": true,
+            "required": false,
             "type": "string"
           }
         ],
@@ -5109,6 +5676,111 @@
       },
       "required": [
         "entity-type"
+      ],
+      "uniqueItems": false
+    },
+    "annotation": {
+      "properties": {
+        "security": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "color": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "creationDate": {
+          "format": "date-time",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "documentId": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "flags": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "lastModifier": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "opacity": {
+          "format": "double",
+          "type": "number",
+          "uniqueItems": false
+        },
+        "page": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "position": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "subject": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "xpath": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "creationDate",
+        "date",
+        "documentId",
+        "entity-type",
+        "flags",
+        "id",
+        "lastModifier",
+        "name",
+        "opacity",
+        "page",
+        "position",
+        "security",
+        "subject",
+        "xpath"
+      ],
+      "uniqueItems": false
+    },
+    "annotationList": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/annotation"
+          },
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
       ],
       "uniqueItems": false
     },
@@ -6036,6 +6708,130 @@
         "newPassword",
         "oldPassword"
       ]
+    },
+    "oauth2ClientData": {
+      "properties": {
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "id": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "id",
+        "name"
+      ],
+      "uniqueItems": false
+    },
+    "oauth2ClientDataList": {
+      "properties": {
+        "currentPageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageOffset": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "currentPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "entity-type": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/oauth2ClientData"
+          },
+          "type": "array",
+          "uniqueItems": false
+        },
+        "erroMessage": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "hasError": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isLastPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isNext": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPaginable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isPreviousPageAvailable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "isSortable": {
+          "type": "boolean",
+          "uniqueItems": false
+        },
+        "maxPageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "numberOfPages": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageIndex": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "pageSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "resultCount": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        },
+        "totalSize": {
+          "format": "int64",
+          "type": "integer",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "entity-type",
+        "entries"
+      ],
+      "uniqueItems": false
     },
     "oauth2ProviderData": {
       "properties": {
