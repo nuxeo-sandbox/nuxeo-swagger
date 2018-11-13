@@ -1,5 +1,9 @@
 'use strict'
 
+//
+// Convert Nuxeo Operations JSON to a usable OpenAPI format.
+//
+
 var jspath = require('jspath');
 var sortObjectsArray = require('sort-objects-array');
 
@@ -7,7 +11,7 @@ var swagger = {
 	"swagger": "2.0",
 	"info": {
 		"title": "Nuxeo REST API Operations",
-		"version": "9.10"
+		"version": "1.0"
 	},
 	"host": "localhost:8080",
 	"basePath": "/nuxeo/site/api/v1/automation",

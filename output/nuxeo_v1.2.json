@@ -4,8 +4,7 @@
   "basePath": "https://nightly.nuxeo.com/nuxeo/site/api/v1",
   "resourcePath": "/workflowModel",
   "produces": [
-    "application/json",
-    "application/json+nxentity"
+    "application/json"
   ],
   "apis": [
     {
@@ -21,19 +20,19 @@
               "paramType": "path",
               "name": "modelName",
               "description": "Name of the workflow model",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Find a workflow model by its name",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -51,21 +50,21 @@
               "paramType": "path",
               "name": "modelName",
               "description": "Name of the workflow model",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "type": "workflowGraph",
           "summary": "Get the json serialization of a workflow model graph",
           "notes": "Get the json serialization of a workflow model graph",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -80,14 +79,14 @@
           "nickname": "getWorkflowModels",
           "type": "workflows",
           "summary": "Get the workflow models",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -106,20 +105,20 @@
               "paramType": "path",
               "name": "workflowInstanceId",
               "description": "Id of the workflow instance",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Find a workflow instance by its id",
           "notes": "Only workflow instance which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -131,20 +130,20 @@
               "paramType": "path",
               "name": "workflowInstanceId",
               "description": "Id of the workflow instance",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Delete a workflow instance by its id",
           "notes": "Only workflow instance which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -160,14 +159,14 @@
           "type": "workflows",
           "summary": "Get the workflow instances launched by the current user",
           "notes": "Only workflow instances launched by current user will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -180,20 +179,20 @@
               "paramType": "body",
               "name": "workflowRequestBody",
               "description": "The workflow request describing the workflow instance to be created",
-              "dataType": "workflowRequest",
-              "required": true
+              "required": true,
+              "type": "workflowRequest"
             }
           ],
           "summary": "Start a workflow instance",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -211,21 +210,21 @@
               "paramType": "path",
               "name": "workflowInstanceId",
               "description": "Id of the workflow instance",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "type": "workflowGraph",
           "summary": "Get the json serialization of a workflow instance graph",
           "notes": "Get the json serialization of a workflow instance graph",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -244,20 +243,20 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the workflow instances launched on the given document",
           "notes": "Only workflow instances launched by current user will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -270,27 +269,27 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "workflowRequestBody",
               "description": "The workflow request describing the workflow instance to be created",
-              "dataType": "workflowRequest",
-              "required": true
+              "required": true,
+              "type": "workflowRequest"
             }
           ],
           "summary": "Start a workflow instance on the given document",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -309,20 +308,20 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the workflow instances launched on the given document",
           "notes": "Only workflow instances launched by current user will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -335,27 +334,27 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "workflowRequestBody",
               "description": "The workflow request describing the workflow instance to be created",
-              "dataType": "workflowRequest",
-              "required": true
+              "required": true,
+              "type": "workflowRequest"
             }
           ],
           "summary": "Start a workflow instance on the given document",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -374,20 +373,20 @@
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get a user by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -400,27 +399,27 @@
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "user",
               "description": "The user to be created or updated",
-              "dataType": "user",
-              "required": true
+              "required": true,
+              "type": "user"
             }
           ],
           "summary": "Update a user by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -433,20 +432,20 @@
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Delete a user by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -465,20 +464,20 @@
               "paramType": "query",
               "name": "q",
               "description": "Query string",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get a user by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -497,20 +496,20 @@
               "paramType": "body",
               "name": "user",
               "description": "The user to be created or updated",
-              "dataType": "user",
-              "required": true
+              "required": true,
+              "type": "user"
             }
           ],
           "summary": "Create a user",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -529,27 +528,27 @@
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Add a group to a user",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -568,20 +567,20 @@
               "paramType": "query",
               "name": "application",
               "description": "Application symbolic name",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Gets all readable authentication tokens",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -594,40 +593,40 @@
               "paramType": "query",
               "name": "application",
               "description": "Application symbolic name",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "deviceId",
               "description": "Device identifier",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "deviceDescription",
               "description": "Device description",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "permission",
               "description": "Permission granted with the authentication token",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -646,19 +645,19 @@
               "paramType": "path",
               "name": "token",
               "description": "Authentication Token",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -677,34 +676,34 @@
               "paramType": "query",
               "name": "userId",
               "description": "id of the user who is actor of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "workflowInstanceId",
               "description": "id of the workflow instance the task belongs to",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "workflowModelName",
               "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Query tasks by user and workflow ids",
           "notes": "Only task instance which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -723,20 +722,20 @@
               "paramType": "path",
               "name": "taskId",
               "description": "Id of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get a task by its id",
           "notes": "Only task instance which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -754,34 +753,34 @@
               "paramType": "path",
               "name": "taskId",
               "description": "Id of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "action",
               "description": "the action to be applied when completed the task. The action determines the transition to be followed and the next task within the workflow.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "taskCompletionRequestBody",
               "description": "The task completion describing the needed information to complete the task",
-              "dataType": "taskCompletionRequest",
-              "required": true
+              "required": true,
+              "type": "taskCompletionRequest"
             }
           ],
           "summary": "Complete task",
           "notes": "Complete a workflow related task",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -799,34 +798,34 @@
               "paramType": "path",
               "name": "taskId",
               "description": "Id of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "actors",
               "description": "comma separated ids of the new actors",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "comment",
               "description": "comment",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Reassign a task",
           "notes": "See https://doc.nuxeo.com/x/1YcZAQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -844,34 +843,34 @@
               "paramType": "path",
               "name": "taskId",
               "description": "Id of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "delegatedActors",
               "description": "comma separated ids of the delegated actors",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "comment",
               "description": "comment",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Delegate a task",
           "notes": "See https://doc.nuxeo.com/x/34z1",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -890,41 +889,41 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "userId",
               "description": "id of the user who is actor of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "workflowInstanceId",
               "description": "id of the workflow instance the task belongs to",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "workflowModelName",
               "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "List tasks of the given document",
           "notes": "Only task instance which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -943,41 +942,41 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "userId",
               "description": "id of the user who is actor of the task",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "workflowInstanceId",
               "description": "id of the workflow instance the task belongs to",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "workflowModelName",
               "description": "name of the workflow model of the task (i.e. 'SerialDocumentReview', 'ParallelDocumentReview')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "List tasks of the given document",
           "notes": "Only task instance which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -996,104 +995,104 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "query",
               "description": "NXQL query",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "fullText",
               "description": "A full text query",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "orderBy",
               "description": "Field on which to order",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get the children of a document by its path",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1112,104 +1111,104 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "query",
               "description": "NXQL query",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "fullText",
               "description": "A full text query",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "orderBy",
               "description": "Field on which to order",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get the children of a document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1228,76 +1227,76 @@
               "paramType": "path",
               "name": "queryLanguage",
               "description": "The query language.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "query",
               "description": "The query to perform. (By default: SELECT * FROM Document)",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "The number of entries per page. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "The selected page index. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "The maximum entries. (By default: 200)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order. (Example: sortOrder='DESC,ASC')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "queryParams",
               "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Performs a search query.",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1316,48 +1315,48 @@
               "paramType": "path",
               "name": "queryLanguage",
               "description": "The query language.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "query",
               "description": "The query to perform. (By default: SELECT * FROM Document)",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "queryParams",
               "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "actionId",
               "description": "Id of the bulk action",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "bulk parameters",
               "description": "The bulk action parameters.",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Performs a bulk action on the query result.",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1376,69 +1375,69 @@
               "paramType": "path",
               "name": "providerName",
               "description": "The page provider name.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "The number of entries per page. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "The selected page index. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "The maximum entries. (By default: 200)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order. (Example: sortOrder='DESC,ASC')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "queryParams",
               "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Perform Named Page Provider on the repository",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1457,41 +1456,41 @@
               "paramType": "path",
               "name": "providerName",
               "description": "The page provider name.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "queryParams",
               "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "actionId",
               "description": "Id of the bulk action",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "bulk parameters",
               "description": "The bulk action parameters.",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Performs a bulk action on the query result.",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1510,19 +1509,19 @@
               "paramType": "path",
               "name": "providerName",
               "description": "The page provider name.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Gets the definition of a page provider.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1541,19 +1540,19 @@
               "paramType": "query",
               "name": "pageProvider",
               "description": "Name of the page provider.",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Returns the list of saved searches.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -1566,19 +1565,19 @@
               "paramType": "body",
               "name": "saved search",
               "description": "The created or updated saved search object.",
-              "dataType": "savedsearch",
-              "required": true
+              "required": true,
+              "type": "savedsearch"
             }
           ],
           "summary": "Saves a search.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1597,19 +1596,19 @@
               "paramType": "path",
               "name": "searchId",
               "description": "The search id.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Return the saved search with the supplied id.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -1622,26 +1621,26 @@
               "paramType": "path",
               "name": "searchId",
               "description": "The search id.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "saved search",
               "description": "The created or updated saved search object.",
-              "dataType": "savedsearch",
-              "required": true
+              "required": true,
+              "type": "savedsearch"
             }
           ],
           "summary": "Updates the saved search with the supplied id.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -1653,19 +1652,19 @@
               "paramType": "path",
               "name": "searchId",
               "description": "The search id.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Deletes the saved search with the supplied id.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1684,61 +1683,61 @@
               "paramType": "path",
               "name": "searchId",
               "description": "The search id.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "The number of entries per page. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "The selected page index. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "The maximum entries. (By default: 200)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order. (Example: sortOrder='DESC,ASC')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Executes saved searches, returning its results.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1757,33 +1756,33 @@
               "paramType": "path",
               "name": "searchId",
               "description": "The search id.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "actionId",
               "description": "Id of the bulk action",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "bulk parameters",
               "description": "The bulk action parameters.",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Performs a bulk action on the saved search result.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1799,14 +1798,14 @@
           "type": "schema",
           "summary": "List registered schemas",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1826,19 +1825,19 @@
               "paramType": "path",
               "name": "schema",
               "description": "The name of the schema",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1857,27 +1856,27 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "renditionName",
               "description": "Name of the rendition, ex: 'pdf'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Returns the specified rendition on document by its path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1896,27 +1895,27 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "renditionName",
               "description": "Name of the rendition, ex: 'pdf'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Returns the specified rendition on document by its id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -1935,62 +1934,62 @@
               "paramType": "path",
               "name": "providerName",
               "description": "The page provider name.",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "The number of entries per page. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "The selected page index. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "The maximum entries. (By default: 200)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order. (Example: sortOrder='DESC,ASC')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "queryParams",
               "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Perform Named Page Provider on the repository",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2009,62 +2008,62 @@
               "paramType": "query",
               "name": "query",
               "description": "The query to perform. (By default: SELECT * FROM Document)",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "The number of entries per page. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "The selected page index. (By default: 0)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "The maximum entries. (By default: 200)",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property(ies) sorting. (Example: sortBy='dc:title,dc:description')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order. (Example: sortOrder='DESC,ASC')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "queryParams",
               "description": "Ordered parameters. (Example: for 'Select * From Document where dc:title = ?' -> queryParams='titleA')",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Perform Named Page Provider on the repository",
           "notes": "You can have also named parameters in the query. See http://doc.nuxeo.com/x/qAc5AQ",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2083,90 +2082,90 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "pageProviderName",
               "description": "Name of the page provider, ex: 'user_domains'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Execute a page provider on document by its path",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2185,90 +2184,90 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "pageProviderName",
               "description": "Name of the page provider, ex: 'user_domains'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Execute a page provider on document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2287,41 +2286,41 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Find a document by its path",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2334,48 +2333,48 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Updates a document by its path",
           "notes": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2387,20 +2386,20 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Deletes a document by its path",
           "notes": "Only documents which you have permission can be deleted",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2413,48 +2412,48 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Creates a document by its parent path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2473,48 +2472,48 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Find a document by its path",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2527,55 +2526,55 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Updates a document by its path",
           "notes": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2587,27 +2586,27 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Deletes a document by its path",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2620,55 +2619,55 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Creates a document by its parent path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2683,14 +2682,14 @@
           "nickname": "getOAuth2Providers",
           "type": "oauth2ProviderDataList",
           "summary": "Retrieves the list of available OAuth2 providers.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2703,19 +2702,19 @@
               "paramType": "body",
               "name": "oauth2ProviderBody",
               "description": "The OAuth2 provider to be added or updated.",
-              "dataType": "oauth2ProviderData",
-              "required": true
+              "required": true,
+              "type": "oauth2ProviderData"
             }
           ],
           "summary": "Adds an OAuth2 provider.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2734,19 +2733,19 @@
               "paramType": "path",
               "name": "oauth2ProviderId",
               "description": "Name of the OAuth2 provider",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Retrieves OAuth2 provider data for the current user.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2759,26 +2758,26 @@
               "paramType": "path",
               "name": "oauth2ProviderId",
               "description": "Name of the OAuth2 provider",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "oauth2ProviderBody",
               "description": "The OAuth2 provider to be added or updated.",
-              "dataType": "oauth2ProviderData",
-              "required": true
+              "required": true,
+              "type": "oauth2ProviderData"
             }
           ],
           "summary": "Updates an OAuth2 provider.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2797,19 +2796,19 @@
               "paramType": "path",
               "name": "oauth2ProviderId",
               "description": "Name of the OAuth2 provider",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Retrieves a valid access token to the current user. A new token will be request if the current one is expired.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2824,14 +2823,14 @@
           "nickname": "getOauth2Tokens",
           "type": "oauth2TokenDataList",
           "summary": "Retrieves all OAuth2 tokens.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2846,14 +2845,14 @@
           "nickname": "getOauth2UserProviderTokens",
           "type": "oauth2TokenDataList",
           "summary": "Retrieves all OAuth2 provider tokens for the current user.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2872,26 +2871,26 @@
               "paramType": "path",
               "name": "oauth2ProviderId",
               "description": "Name of the OAuth2 provider",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Gets an OAuth2 provider token.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2904,26 +2903,26 @@
               "paramType": "path",
               "name": "oauth2ProviderId",
               "description": "Name of the OAuth2 provider",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Updates an OAuth2 provider token.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -2935,26 +2934,26 @@
               "paramType": "path",
               "name": "oauth2ProviderId",
               "description": "Name of the OAuth2 provider",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Delete an OAuth2 provider token.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2969,14 +2968,14 @@
           "nickname": "getOauth2UserClientTokens",
           "type": "oauth2TokenDataList",
           "summary": "Retrieves all OAuth2 client tokens for the current user.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -2995,26 +2994,26 @@
               "paramType": "path",
               "name": "oauth2ClientId",
               "description": "Name of the OAuth2 client",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Retrieves a OAuth2 client token.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3027,26 +3026,26 @@
               "paramType": "path",
               "name": "oauth2ClientId",
               "description": "Name of the OAuth2 client",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Updates an OAuth2 client token.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3058,26 +3057,26 @@
               "paramType": "path",
               "name": "oauth2ClientId",
               "description": "Name of the OAuth2 client",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Deletes a OAuth2 client token.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3092,14 +3091,14 @@
           "nickname": "getOauth2Clients",
           "type": "oauth2ClientDataList",
           "summary": "Retrieves a OAuth2 client.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3118,19 +3117,19 @@
               "paramType": "path",
               "name": "oauth2ClientId",
               "description": "Name of the OAuth2 client",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Retrieves a OAuth2 client.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3146,14 +3145,14 @@
           "type": "user",
           "summary": "Get the logged in user",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3173,19 +3172,19 @@
               "paramType": "body",
               "name": "passwordbody",
               "description": "The body containing the new password along with the old password for security check",
-              "dataType": "changePassword",
-              "required": true
+              "required": true,
+              "type": "changePassword"
             }
           ],
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3204,41 +3203,41 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Find a document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3251,48 +3250,48 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Updates a document by its id",
           "notes": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3304,41 +3303,41 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Deletes a document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3351,27 +3350,27 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             }
           ],
           "summary": "Creates a document by its parent id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3390,48 +3389,48 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Find a document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3444,55 +3443,55 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Updates a document by its id",
           "notes": "Only documents which you have permission can be updated. Only the properties part of the document object is taken into account for update",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3504,27 +3503,27 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Deletes a document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3537,55 +3536,55 @@
               "paramType": "path",
               "name": "repoId",
               "description": "The name of the repository",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated document object",
-              "dataType": "document",
-              "required": true
+              "required": true,
+              "type": "document"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Creates a document by its parent id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3604,20 +3603,20 @@
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get a group by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3630,27 +3629,27 @@
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "group",
               "description": "Group object to be created or updated.",
-              "dataType": "group",
-              "required": true
+              "required": true,
+              "type": "group"
             }
           ],
           "summary": "Update a group by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -3662,20 +3661,20 @@
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Delete a group by its name",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3694,20 +3693,20 @@
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the user members of a group",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3726,20 +3725,20 @@
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the group members of a group",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3758,20 +3757,20 @@
               "paramType": "query",
               "name": "q",
               "description": "Query string. Ex: 'Admin' will return Administrator user",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Search a group",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3790,20 +3789,20 @@
               "paramType": "body",
               "name": "group",
               "description": "Group object to be created or updated.",
-              "dataType": "group",
-              "required": true
+              "required": true,
+              "type": "group"
             }
           ],
           "summary": "Create a group",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3822,27 +3821,27 @@
               "paramType": "path",
               "name": "groupName",
               "description": "Name of the group, ex: 'members'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "userName",
               "description": "Username of the user, ex: 'Administrator'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Add a user to a group",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3858,14 +3857,14 @@
           "type": "facet",
           "summary": "List registered facets",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3885,19 +3884,19 @@
               "paramType": "path",
               "name": "facet",
               "description": "The name of the facet",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3916,27 +3915,27 @@
               "paramType": "query",
               "name": "type",
               "description": "The type of the empty document to be initialized",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the empty document to be initialized",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Initialize an empty document with default properties given a document type",
           "notes": "To retrieve all initialized properties, the 'properties: *' header must be used",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -3955,34 +3954,34 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "type",
               "description": "The type of the empty document to be initialized",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the empty document to be initialized",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Initialize an empty document with default properties given a document type and a parent",
           "notes": "To retrieve all initialized properties, the 'properties: *' header must be used",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4001,34 +4000,34 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "type",
               "description": "The type of the empty document to be initialized",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the empty document to be initialized",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Initialize an empty document with default properties given a document type and a parent",
           "notes": "To retrieve all initialized properties, the 'properties: *' header must be used",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4044,14 +4043,14 @@
           "type": "docType",
           "summary": "List registered document type",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4071,19 +4070,19 @@
               "paramType": "path",
               "name": "docType",
               "description": "The name of the document type",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4102,62 +4101,62 @@
               "paramType": "path",
               "name": "directoryName",
               "description": "Directory name. Ex: 'subject'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get directory entries",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -4170,27 +4169,27 @@
               "paramType": "path",
               "name": "directoryName",
               "description": "Directory name. Ex: 'subject'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "Directory",
               "description": "Directory entry object that is created or updated in the directory 'directoryName'",
-              "dataType": "directoryEntry",
-              "required": true
+              "required": true,
+              "type": "directoryEntry"
             }
           ],
           "summary": "Creates a directory entry",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4209,27 +4208,27 @@
               "paramType": "path",
               "name": "directoryName",
               "description": "Directory name. Ex: 'subject'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "entryId",
               "description": "Directory entry id",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get a directory entry",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -4242,34 +4241,34 @@
               "paramType": "path",
               "name": "directoryName",
               "description": "Directory name. Ex: 'subject'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "entryId",
               "description": "Directory entry id",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "Directory",
               "description": "Directory entry object that is created or updated in the directory 'directoryName'",
-              "dataType": "directoryEntry",
-              "required": true
+              "required": true,
+              "type": "directoryEntry"
             }
           ],
           "summary": "Update a directory entry",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -4281,27 +4280,27 @@
               "paramType": "path",
               "name": "directoryName",
               "description": "Directory name. Ex: 'subject'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "entryId",
               "description": "Directory entry id",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Delete a directory entry",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4320,41 +4319,41 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the converter to execute",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "type",
               "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "format",
               "description": "The requested extension of the converted Blob, such as 'pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Convert the main Blob of the document",
           "notes": "One of the 'name', 'type' or 'format' parameters must be passed.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4373,41 +4372,41 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the converter to execute",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "type",
               "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "format",
               "description": "The requested extension of the converted Blob, such as 'pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Convert the Blob at the given xpath of the document",
           "notes": "One of the 'name', 'type' or 'format' parameters must be passed.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4426,41 +4425,41 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the converter to execute",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "type",
               "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "format",
               "description": "The requested extension of the converted Blob, such as 'pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Convert the main Blob of the document",
           "notes": "One of the 'name', 'type' or 'format' parameters must be passed.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4479,41 +4478,41 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "name",
               "description": "The name of the converter to execute",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "type",
               "description": "The requested mime type for the converted Blob, such as 'application/pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "format",
               "description": "The requested extension of the converted Blob, such as 'pdf'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Convert the Blob at the given xpath of the document",
           "notes": "One of the 'name', 'type' or 'format' parameters must be passed.",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4532,83 +4531,83 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get the children of a document by its path",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4627,83 +4626,83 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "currentPageIndex",
               "description": "Index of the current page",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "offset",
               "description": "The offset of the returned result set. If set, the 'currentPageIndex' parameter is ignored.",
-              "dataType": "integer",
-              "required": false
+              "required": false,
+              "type": "integer"
             },
             {
               "paramType": "query",
               "name": "pageSize",
               "description": "Size of the page to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "maxResults",
               "description": "Maximum results to retrieve",
-              "dataType": "long",
-              "required": false
+              "required": false,
+              "type": "long"
             },
             {
               "paramType": "query",
               "name": "sortBy",
               "description": "Property to sort by, for example 'dc:title'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "query",
               "name": "sortOrder",
               "description": "Sort order, accepts 'asc' or 'desc', default is 'desc'",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXDocumentProperties",
               "description": "Schemas to be included in response",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-NXContext-Category",
               "description": "Categories to be included in context parameters map",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             },
             {
               "paramType": "header",
               "name": "X-Versioning-Option",
               "description": "Checkin Document Version. Return the last document version. (not live document) | Values: major or minor or none",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get the children of a document by its id",
           "notes": "Only documents which you have permission to see will be returned",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4722,27 +4721,27 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the business object adapter on a document given its path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -4755,34 +4754,34 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated business object",
-              "dataType": "BusinessObject",
-              "required": true
+              "required": true,
+              "type": "BusinessObject"
             }
           ],
           "summary": "Updates the business object adapter on a document given its path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4801,27 +4800,27 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the list of business object of the children of a document by its path",
           "notes": "<ul><li>If a document can't be adapted, the resulting item will be null</li><li> This type of call works for every API endpoint that responds DocumentList (@search, @pp ...)</li></ul>",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4840,34 +4839,34 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docName",
               "description": "Name of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Creates a document based on its business object",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4886,27 +4885,27 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the business object adapter on a document given its id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -4919,34 +4918,34 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "document",
               "description": "The created or updated business object",
-              "dataType": "BusinessObject",
-              "required": true
+              "required": true,
+              "type": "BusinessObject"
             }
           ],
           "summary": "Updates the business object adapter on a document given its id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -4965,27 +4964,27 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Get the list of business object of the children of a document by its id",
           "notes": "<ul><li>If a document can't be adapted, the resulting item will be null</li><li> This type of call works for every API endpoint that responds DocumentList (@search, @pp ...)</li></ul>",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5004,34 +5003,34 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "adapterName",
               "description": "Name of the adapter",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "docName",
               "description": "Name of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Creates a document based on its business object",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5049,26 +5048,26 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "fieldPath",
               "description": "The field path you want do download (ex: file:content)",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get the main blob of a document by its path",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5086,26 +5085,26 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "fieldPath",
               "description": "The field path you want do download (ex: file:content)",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get the main blob of a document by its id",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5121,14 +5120,14 @@
           "responseClass": "OperationDescriptionList",
           "summary": "Gets the list of all operation/chain",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5146,30 +5145,30 @@
               "paramType": "path",
               "name": "operationName",
               "description": "Name of the operation",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "operationParams",
               "description": "The operation parameters",
-              "dataType": "OperationParams",
-              "required": true
+              "required": true,
+              "type": "OperationParams"
             }
           ],
           "consumes": [
-            "application/json+nxrequest"
+            "application/json"
           ],
           "summary": "Execute an operation or a chain on a document",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -5182,20 +5181,20 @@
               "paramType": "path",
               "name": "operationName",
               "description": "Name of the operation",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Gets the description of the operation/chain",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5213,37 +5212,37 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "operationName",
               "description": "Name of the operation",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "operationParams",
               "description": "The operation parameters",
-              "dataType": "OperationParams",
-              "required": true
+              "required": true,
+              "type": "OperationParams"
             }
           ],
           "consumes": [
-            "application/json+nxrequest"
+            "application/json"
           ],
           "summary": "Execute an operation or a chain on a document",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5261,37 +5260,37 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "operationName",
               "description": "Name of the operation",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "operationParams",
               "description": "The operation parameters",
-              "dataType": "OperationParams",
-              "required": true
+              "required": true,
+              "type": "OperationParams"
             }
           ],
           "consumes": [
-            "application/json+nxrequest"
+            "application/json"
           ],
           "summary": "Execute an operation or a chain on the children of a document",
           "notes": "This works on every API endpoint that return DocumentList",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5310,20 +5309,20 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "View the audit trail of a document given its path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5342,20 +5341,20 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "View the audit trail of a document given its id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5374,26 +5373,26 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "Annotation",
               "description": "Annotation object that is created or updated.",
-              "dataType": "annotation",
-              "required": true
+              "required": true,
+              "type": "annotation"
             }
           ],
           "summary": "Create an annotation on a given document",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -5406,26 +5405,26 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "body",
               "name": "Annotation",
               "description": "Annotation object that is created or updated.",
-              "dataType": "annotation",
-              "required": true
+              "required": true,
+              "type": "annotation"
             }
           ],
           "summary": "Update an annotation on a given document",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -5438,26 +5437,26 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "fieldPath",
               "description": "The field path you want do download (ex: file:content)",
-              "dataType": "string",
-              "required": false
+              "required": false,
+              "type": "string"
             }
           ],
           "summary": "Get all annotations on a given document blob",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5476,26 +5475,26 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "annotationId",
               "description": "Id of the annotation",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Retrieve an annotation on a document given its id",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         },
@@ -5507,26 +5506,26 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             {
               "paramType": "path",
               "name": "annotationId",
               "description": "Id of the annotation",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "Delete an annotation on a document given its id",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5545,20 +5544,20 @@
               "paramType": "path",
               "name": "docPath",
               "description": "Path of the document, ex: 'default-domain'",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "View the ACL of a document given its path",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
@@ -5577,20 +5576,20 @@
               "paramType": "path",
               "name": "docId",
               "description": "Id of the document",
-              "dataType": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           ],
           "summary": "View the ACL of a document given its id",
           "notes": "",
-          "errorResponses": [
+          "responseMessages": [
             {
-              "reason": "Not Authorized to get document",
-              "code": 401
+              "code": 401,
+              "message": "Not Authorized to get document"
             },
             {
-              "reason": "Document not found",
-              "code": 404
+              "code": 404,
+              "message": "Document not found"
             }
           ]
         }
