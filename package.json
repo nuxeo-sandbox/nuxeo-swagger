@@ -16,15 +16,16 @@
     "node": ">=6.4.0"
   },
   "dependencies": {
-    "static-eval": "~>2.0.0",
-    "cryptiles": "~>4.1.2",
-    "deep-extend": "~>0.5.1",
     "array-union": "^1.0.2",
+    "cryptiles": "~>4.1.2",
     "deep-equal": "^1.0.1",
+    "deep-extend": "~>0.6.0",
+    "lodash": "~>4.17.11",
     "deep-merge": "^1.0.0",
     "jspath": "^0.4.0",
-    "sort-objects-array": "^1.4.1",
-    "swagger-model-validator": "^3.0.5",
+    "sort-objects-array": "^1.5.0",
+    "static-eval": "^2.0.1",
+    "swagger-model-validator": "^3.0.7",
     "swagger-tools": "^0.10.4"
   }
 }
