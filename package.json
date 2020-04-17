@@ -25,6 +25,7 @@
     "js-yaml": "~> 3.13.1",
     "jspath": "^0.4.0",
     "lodash": "~>4.17.15",
+    "minimist": ">=0.2.1",
     "sort-objects-array": "^1.5.0",
     "static-eval": "^2.0.2",
     "swagger-model-validator": "^3.0.7",
